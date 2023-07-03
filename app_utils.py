@@ -10,7 +10,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from multiprocessing import  Pool,freeze_support
+from webdriver_manager.chrome import ChromeDriverManager
 
 def scrape_odds(data):
     """Scrape the odds from different bookies for a specific game
@@ -208,12 +210,12 @@ def expected_value(result,market):
 
 @st.cache_resource
 def scrape_date(day,month,year):
-    driver_path = '/Users/danielguerrero/chromedriver.exe'
+    #driver_path = '/Users/danielguerrero/chromedriver.exe'
     options = Options()
     options.add_argument('--headless')
     options.add_argument('--disable-gpu') 
 
-    driver = webdriver.Chrome(executable_path=driver_path,options=options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
 
     # Navigate to a webpage
     driver.get(f'https://www.betexplorer.com/next/football/?year={year}&month={month}&day={day}')
