@@ -1,0 +1,12 @@
+requests
+json
+beautifulsoup4
+streamlit
+pandas
+oracledb
+math
+selenium
+chromedriver-binary
+multiprocessing
+numpy
+matplotlib
