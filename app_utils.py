@@ -258,7 +258,7 @@ def scrape_date(day,month,year):
             url = 'https://www.betexplorer.com'+row.find('a')['href']
         
             odds_element = row.find_all("td",class_="table-main__odds")
-            odds = [x.find("a").text for x in odds_element]
+            odds  = [x.find("a").text if x.find("a").text else x.find("a")['data-odd'] for x in odds_element]
             
             raw_data=[tournament,time_,home,away,url,odds[0],odds[1],odds[2]]
 
