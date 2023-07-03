@@ -363,11 +363,11 @@ def find_outcome(url,market,bet):
             else:
                 if market =='1x2':
                     if home>away:
-                        outcome='home'
+                        outcome='Home'
                     elif away>home:
-                        outcome='away'
+                        outcome='Away'
                     elif away==home:
-                        outcome='draw'
+                        outcome='Draw'
                     else:
                         outcome=None
                 elif market=='BTTS':
