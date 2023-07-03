@@ -224,11 +224,14 @@ def scrape_date(day,month,year):
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="onetrust-accept-btn-handler"]'))).click()
     except Exception as e:
         pass
-
-    timezone = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.ID, "js-timezone")))
-    timezone.click()
-    zone =  WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@onclick,'-5')]")))
-    zone.click()  
+    
+    try:
+        timezone = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.ID, "js-timezone")))
+        timezone.click()
+        zone =  WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@onclick,'-5')]")))
+        zone.click()
+    except:
+        pass  
 
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     # Close the webdriver
