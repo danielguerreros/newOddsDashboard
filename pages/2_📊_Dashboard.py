@@ -168,7 +168,7 @@ fig3,ax3 =plt.subplots(figsize=(5,2))
 df_tournament.sort_values('Profit',ascending=False)['Profit'].head(15).plot.bar(ax=ax3)
 with c4:
     st.markdown("## Statistics per Bookie")
-    per_Bookie=df.groupby("Bookie").sum()[['Bankroll','Payout']].rename(columns={"Bankroll":"Stake"})
+    per_Bookie=df.groupby("Bookie").sum(numeric_only=True)[['Bankroll','Payout']].rename(columns={"Bankroll":"Stake"})
     per_Bookie["Profit"] = per_Bookie["Payout"] - per_Bookie["Stake"]
     per_Bookie["ROI"] = 100*(per_Bookie["Profit"]/per_Bookie["Stake"])
     st.dataframe(per_Bookie.sort_values("ROI",ascending=False).round(2))
