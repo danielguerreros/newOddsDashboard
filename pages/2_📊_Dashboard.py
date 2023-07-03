@@ -87,8 +87,9 @@ total_payout = df['Payout'].sum()
 roi = np.round(100*(total_payout - total_stake) / total_stake,2)
 
 
-
-data = df.groupby(df["Date"].dt.date).sum().reset_index()
+data = df.copy()
+data['Date'] = data['Date'].dt.date
+data = data.groupby('Date').sum().reset_index()
 data['Profit'] = data['Payout'] - data['Bankroll']
 data['Cumulative Profit'] = data['Profit'].cumsum()
 
