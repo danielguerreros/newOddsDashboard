@@ -228,8 +228,11 @@ def scrape_date(day,month,year):
     try:
         timezone = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.ID, "js-timezone")))
         timezone.click()
+
+        WebDriverWait(driver, 10).until(EC.invisibility_of_element_located((By.ID, "onetrust-button-group")))
+
         zone =  WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@onclick,'-5')]")))
-        zone.click()
+        driver.execute_script("arguments[0].click();", zone)
     except:
         pass  
 
