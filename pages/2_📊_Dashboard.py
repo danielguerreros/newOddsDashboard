@@ -6,6 +6,11 @@ from datetime import datetime, timedelta
 import math
 from app_utils import *
 
+
+st.set_page_config(
+    layout = 'wide'
+)
+
 # Dashboard title
 st.title("Bets Report ⚽️")
 
@@ -48,7 +53,7 @@ st.sidebar.markdown('''
 df["Date"] = pd.to_datetime(df["Date"],format='%d/%m/%Y %H:%M')
 df["Time"] = df["Date"].astype(str)
 new_bets = df[df['Outcome'].isna()].sort_values('Date',ascending=False).reset_index(drop=True).round(3)
-new_bets['Date'] = new_bets['Date'].dt.date
+new_bets['Date'] = new_bets['Date']
 new_bets['Bankroll'] = np.round(new_bets['Stake']*bankroll,3)
 df = df.dropna(subset='Outcome')
 
