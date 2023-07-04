@@ -376,7 +376,7 @@ def find_outcome(url,market,bet):
                         outcome='Draw'
                     else:
                         outcome=None
-                elif market=='BTTS':
+                elif market=='bts':
                     if (float(home)>0) and (float(away)>0):
                         outcome='btts-yes'
                     elif (float(home)==0) | (float(away)==0):
